@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Ratingdom Movil</string>
+
+
+    <string name="action_settings">Settings</string>
+
+     <!--Tokens de twitter-->
+    <string name="consumer_key">UtaoEPEIJ9X69dK24UGKqqahY</string>
+    <string name="consumer_secret">IBD6WdIHCYBikOFjpP4xJ0nPFKCsaug8VWlrGMlkJ9DUIwsQ0H</string>
+    <string name="access_token">713382811-vAh2Vl7CXEZKt82EWui3kwyw40WjZCtBiRif0Djg</string>
+    <string name="access_token_secret">WvkVigmjQ3RNFkIoxu17sltssTZnjTRGcXOMGOl92gDAa</string>
+</resources>
