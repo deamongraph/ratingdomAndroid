@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setMessage("Cargando Palabras");
+        progressDialog.setMessage("Loading Libraries...");
         progressDialog.setCancelable(false);
         progressDialog.show();
         PalabrasPositivas pos = new PalabrasPositivas(ctx,progressDialog);
@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 
 
         progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setMessage("Cargando Palabras");
+        progressDialog.setMessage("Loading Libraries...");
         progressDialog.setCancelable(false);
         progressDialog.show();
         PalabrasNegativas neg = new PalabrasNegativas(ctx,progressDialog);
@@ -69,13 +69,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 progressDialog = new ProgressDialog(MainActivity.this);
-                progressDialog.setMessage("Cargando Datos Desde Twitter");
+                progressDialog.setMessage("Loading tweets from Twitter");
                 progressDialog.setCancelable(false);
                 progressDialog.show();
               EditText screenname = (EditText) findViewById(R.id.txt_screenname);
               String tweet = screenname.getText().toString();
               if(tweet.equals(null))
-              Toast.makeText(getBaseContext(), "El Usuario de twitter no puede ser nulo.", Toast.LENGTH_LONG).show();
+              Toast.makeText(getBaseContext(), "The user cannot be empty.", Toast.LENGTH_LONG).show();
               TwitterService ts = new TwitterService(tweet,getBaseContext(),progressDialog);
               ts.execute();
             }
@@ -94,27 +94,9 @@ public class MainActivity extends Activity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
 
 
 }

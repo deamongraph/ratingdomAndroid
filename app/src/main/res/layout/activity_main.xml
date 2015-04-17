@@ -27,6 +27,19 @@
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Let see your last 20 tweets."
+        android:id="@+id/textView4"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:textStyle="italic"
+        android:textColor="#ff0099cc" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,7 +68,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Buscar"
+        android:text="Are you truly happy?"
         android:id="@+id/btn_find"
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:background="#ff0099cc"

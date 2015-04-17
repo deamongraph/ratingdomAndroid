@@ -43,7 +43,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Datos:"
+                android:text="Data:"
                 android:id="@+id/textView2"
                 android:textColor="@android:color/primary_text_dark_nodisable"
                 android:background="#ff0099cc"
@@ -61,6 +61,7 @@
                 <ListView
                     android:id="@+id/list"
                     android:layout_height="wrap_content"
+                    android:fadeScrollbars="false"
                     android:layout_width="match_parent">
                 </ListView>
 
@@ -70,7 +71,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Graficos"
+                android:text="Graph:"
                 android:id="@+id/textView3"
                 android:textColor="@android:color/primary_text_dark_nodisable"
                 android:background="#ff0099cc"
@@ -81,7 +82,7 @@
 
             <com.jjoe64.graphview.GraphView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:id="@+id/graph1"/>
 
         </LinearLayout>
@@ -89,7 +90,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Volver Atras"
+        android:text="Back"
         android:id="@+id/btn_result_atras"
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:background="#ff0099cc"
