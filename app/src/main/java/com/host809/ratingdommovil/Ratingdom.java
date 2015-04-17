@@ -4,6 +4,10 @@ package com.host809.ratingdommovil;
  * Created by deamon3 on 16/04/15.
  */
 
+        import java.io.BufferedReader;
+        import java.io.File;
+        import java.io.FileNotFoundException;
+        import java.io.FileReader;
         import java.util.ArrayList;
         import java.util.List;
 
@@ -22,7 +26,8 @@ public class Ratingdom {
     private static String access_token="713382811-vAh2Vl7CXEZKt82EWui3kwyw40WjZCtBiRif0Djg";
     private static String access_key="WvkVigmjQ3RNFkIoxu17sltssTZnjTRGcXOMGOl92gDAa";
        /* porcentaje = count *100 /200*/
-
+     public static List<String> posWords = null;
+    public static List<String> negWords = null;
 
 
 
@@ -272,7 +277,183 @@ public class Ratingdom {
 
         return totalscore;
     }
+    public static int sentimentscore(String screen_name) throws TwitterException {
+        String twitterUsername = screen_name;
+        Twitter twitter = new TwitterFactory().getInstance();
+        AccessToken accessToken= new AccessToken(access_token, access_key);
+        twitter.setOAuthConsumer(consumer_key, consumer_secret);
+        twitter.setOAuthAccessToken(accessToken);
+        twitter4j.User a_name = twitter.showUser(twitterUsername);
+        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 20));
+        int score = 0;
+        for(Status tweet: tweets){
+            String text  = tweet.getText();
+            if(Ratingdom.sentiment(text).equals("Positivo"))
+                score = score +1;
+            else if(Ratingdom.sentiment(text).equals("Negativo")){
+                score = score-1;
+            }
 
+        }
+
+        return score;
+    }
+    public static int positiveCount(String screen_name) throws TwitterException {
+        String twitterUsername = screen_name;
+        Twitter twitter = new TwitterFactory().getInstance();
+        AccessToken accessToken= new AccessToken(access_token, access_key);
+        twitter.setOAuthConsumer(consumer_key, consumer_secret);
+        twitter.setOAuthAccessToken(accessToken);
+        twitter4j.User a_name = twitter.showUser(twitterUsername);
+        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 20));
+        int score = 0;
+        for(Status tweet: tweets){
+            String text  = tweet.getText();
+            if(Ratingdom.sentiment(text).equals("Positivo"))
+                score = score+1;
+
+
+        }
+        return score;
+    }
+    public static int negativeCount(String screen_name) throws TwitterException {
+        String twitterUsername = screen_name;
+        Twitter twitter = new TwitterFactory().getInstance();
+        AccessToken accessToken= new AccessToken(access_token, access_key);
+        twitter.setOAuthConsumer(consumer_key, consumer_secret);
+        twitter.setOAuthAccessToken(accessToken);
+        twitter4j.User a_name = twitter.showUser(twitterUsername);
+        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 20));
+        int score = 0;
+        for(Status tweet: tweets){
+            String text  = tweet.getText();
+            if(Ratingdom.sentiment(text).equals("Negativo"))
+                score = score+1;
+
+
+        }
+
+
+        return score;
+    }
+    public static int neutralCount(String screen_name) throws TwitterException {
+        String twitterUsername = screen_name;
+        Twitter twitter = new TwitterFactory().getInstance();
+        AccessToken accessToken= new AccessToken(access_token, access_key);
+        twitter.setOAuthConsumer(consumer_key, consumer_secret);
+        twitter.setOAuthAccessToken(accessToken);
+        twitter4j.User a_name = twitter.showUser(twitterUsername);
+        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 20));
+        int score = 0;
+        for(Status tweet: tweets){
+            String text  = tweet.getText();
+            if(Ratingdom.sentiment(text).equals("Neutral"))
+                score = score+1;
+
+
+        }
+        return score;
+    }
+
+    public static int positivepercent(String screen_name) throws TwitterException {
+        String twitterUsername = screen_name;
+        Twitter twitter = new TwitterFactory().getInstance();
+        AccessToken accessToken= new AccessToken(access_token, access_key);
+        twitter.setOAuthConsumer(consumer_key, consumer_secret);
+        twitter.setOAuthAccessToken(accessToken);
+        twitter4j.User a_name = twitter.showUser(twitterUsername);
+        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 20));
+        int score = 0;
+        for(Status tweet: tweets){
+            String text  = tweet.getText();
+            if(Ratingdom.sentiment(text).equals("Positivo"))
+                score = score+1;
+
+
+        }
+        return ((score*100)/200);
+    }
+    public static int negativepercent(String screen_name) throws TwitterException {
+        String twitterUsername = screen_name;
+        Twitter twitter = new TwitterFactory().getInstance();
+        AccessToken accessToken= new AccessToken(access_token, access_key);
+        twitter.setOAuthConsumer(consumer_key, consumer_secret);
+        twitter.setOAuthAccessToken(accessToken);
+        twitter4j.User a_name = twitter.showUser(twitterUsername);
+        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 20));
+        int score = 0;
+        for(Status tweet: tweets){
+            String text  = tweet.getText();
+            if(Ratingdom.sentiment(text).equals("Negativo"))
+                score = score+1;
+
+
+        }
+
+
+        return ((score*100)/200);
+    }
+    public static int neutralpercent(String screen_name) throws TwitterException {
+        String twitterUsername = screen_name;
+        Twitter twitter = new TwitterFactory().getInstance();
+        AccessToken accessToken= new AccessToken(access_token, access_key);
+        twitter.setOAuthConsumer(consumer_key, consumer_secret);
+        twitter.setOAuthAccessToken(accessToken);
+        twitter4j.User a_name = twitter.showUser(twitterUsername);
+        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 20));
+        int score = 0;
+        for(Status tweet: tweets){
+            String text  = tweet.getText();
+            if(Ratingdom.sentiment(text).equals("Neutral"))
+                score = score+1;
+
+
+        }
+        return ((score*100)/200);
+    }
+    public static String sentiment(String tweet){
+
+
+
+
+
+
+        // normalize!
+        tweet = tweet.toLowerCase();
+        tweet = tweet.trim();
+        // remove all non alpha-numeric non whitespace chars
+        tweet = tweet.replaceAll("[^a-zA-Z0-9\\s]", "");
+
+        int negCounter = 0;
+        int posCounter = 0;
+
+        // so what we got?
+        String[] words = tweet.split(" ");
+
+        // check if the current word appears in our reference lists...
+        for (int i = 0; i < words.length; i++) {
+            if (posWords.contains(words[i])) {
+                posCounter++;
+            }
+            if (negWords.contains(words[i])) {
+                negCounter++;
+            }
+        }
+
+        // positive matches MINUS negative matches
+        int result = (posCounter - negCounter);
+
+        // negative?
+        if (result < 0) {
+            return "Negativo";
+            // or positive?
+        } else if (result > 0) {
+            return "Positivo";
+        }
+
+        // neutral to the rescue!
+        return "Neutral";
+    }
 
 
 }
