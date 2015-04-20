@@ -1,14 +1,11 @@
 package com.host809.ratingdommovil;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,7 +15,6 @@ import com.host809.ratingdommovil.entities.Counts;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 
 public class Result extends Activity {
@@ -73,7 +69,19 @@ public class Result extends Activity {
             finish();
         }
     });
+    Button tweets = (Button)findViewById(R.id.btn_result_vertweets);
+        tweets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getBaseContext(),Tweets.class);
+                myIntent.putExtra("Counts", count);
+                myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getBaseContext().startActivity(myIntent);
+            }
+        });
     }
+
+
 
 
 

@@ -87,14 +87,35 @@
 
         </LinearLayout>
 
-    <Button
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:id="@+id/btn_result_atras"
-        android:textColor="@android:color/primary_text_dark_nodisable"
-        android:background="#ff0099cc"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/btn_result_atras"
+            android:textColor="@android:color/primary_text_dark"
+            android:background="#ff0099cc"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="0.5" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tweets"
+            android:id="@+id/btn_result_vertweets"
+            android:layout_alignParentBottom="true"
+            android:textColor="@android:color/primary_text_dark"
+            android:background="#ff00cc54"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

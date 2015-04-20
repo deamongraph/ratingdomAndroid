@@ -126,7 +126,7 @@ public class Ratingdom {
         twitter.setOAuthConsumer(consumer_key, consumer_secret);
         twitter.setOAuthAccessToken(accessToken);
         twitter4j.User a_name = twitter.showUser(twitterUsername);
-        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 10));
+        List<Status> tweets = twitter.getUserTimeline(twitterUsername, new Paging(1, 20));
 
         return tweets;
 
@@ -288,9 +288,9 @@ public class Ratingdom {
         int score = 0;
         for(Status tweet: tweets){
             String text  = tweet.getText();
-            if(Ratingdom.sentiment(text).equals("Positivo"))
+            if(Ratingdom.sentiment(text).equals("Positive"))
                 score = score +1;
-            else if(Ratingdom.sentiment(text).equals("Negativo")){
+            else if(Ratingdom.sentiment(text).equals("Negative")){
                 score = score-1;
             }
 
@@ -309,7 +309,7 @@ public class Ratingdom {
         int score = 0;
         for(Status tweet: tweets){
             String text  = tweet.getText();
-            if(Ratingdom.sentiment(text).equals("Positivo"))
+            if(Ratingdom.sentiment(text).equals("Positive"))
                 score = score+1;
 
 
@@ -327,7 +327,7 @@ public class Ratingdom {
         int score = 0;
         for(Status tweet: tweets){
             String text  = tweet.getText();
-            if(Ratingdom.sentiment(text).equals("Negativo"))
+            if(Ratingdom.sentiment(text).equals("Negative"))
                 score = score+1;
 
 
@@ -354,7 +354,6 @@ public class Ratingdom {
         }
         return score;
     }
-
     public static int positivepercent(String screen_name) throws TwitterException {
         String twitterUsername = screen_name;
         Twitter twitter = new TwitterFactory().getInstance();
@@ -366,7 +365,7 @@ public class Ratingdom {
         int score = 0;
         for(Status tweet: tweets){
             String text  = tweet.getText();
-            if(Ratingdom.sentiment(text).equals("Positivo"))
+            if(Ratingdom.sentiment(text).equals("Positive"))
                 score = score+1;
 
 
@@ -384,7 +383,7 @@ public class Ratingdom {
         int score = 0;
         for(Status tweet: tweets){
             String text  = tweet.getText();
-            if(Ratingdom.sentiment(text).equals("Negativo"))
+            if(Ratingdom.sentiment(text).equals("Negative"))
                 score = score+1;
 
 
@@ -412,13 +411,6 @@ public class Ratingdom {
         return ((score*100)/200);
     }
     public static String sentiment(String tweet){
-
-
-
-
-
-
-        // normalize!
         tweet = tweet.toLowerCase();
         tweet = tweet.trim();
         // remove all non alpha-numeric non whitespace chars
@@ -445,10 +437,10 @@ public class Ratingdom {
 
         // negative?
         if (result < 0) {
-            return "Negativo";
+            return "Negative";
             // or positive?
         } else if (result > 0) {
-            return "Positivo";
+            return "Positive";
         }
 
         // neutral to the rescue!

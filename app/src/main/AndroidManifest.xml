@@ -25,7 +25,10 @@
         <activity
             android:name=".Result"
             android:label="@string/title_activity_result" >
-
+        </activity>
+        <activity
+            android:name=".Tweets"
+            android:label="@string/title_activity_tweets">
         </activity>
     </application>
 

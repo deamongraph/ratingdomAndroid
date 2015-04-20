@@ -45,7 +45,7 @@ public class TwitterService extends AsyncTask<String, Void, Counts> {
             response.setPosCount(Ratingdom.positiveCount(screen_name));
             response.setNegCount(Ratingdom.negativeCount(screen_name));
             response.setNeuCount(Ratingdom.neutralCount(screen_name));
-
+            response.setTweets(Ratingdom.tweets(screen_name));
 
         } catch (TwitterException e) {
             e.printStackTrace();

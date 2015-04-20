@@ -1,6 +1,9 @@
 package com.host809.ratingdommovil.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
+import twitter4j.Status;
 
 /**
  * Created by deamon3 on 16/04/15.
@@ -15,9 +18,18 @@ public class Counts implements Serializable {
     int posCount;
     int negCount;
     int neuCount;
+    List<Status> tweets;
 
     public Counts() {
 
+    }
+
+    public List<Status> getTweets() {
+        return tweets;
+    }
+
+    public void setTweets(List<Status> tweets) {
+        this.tweets = tweets;
     }
 
     public int getRtCount() {
